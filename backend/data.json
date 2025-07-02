@@ -1,0 +1,38 @@
+{
+  "mib@test.bg": [
+    {
+      "name": "Rome",
+      "attractions": [
+        "Colliseum"
+      ],
+      "restaurants": [
+        "Rome"
+      ]
+    },
+    {
+      "name": "Paris",
+      "attractions": [
+        "Louvre"
+      ],
+      "restaurants": []
+    }
+  ],
+  "latest": [
+    {
+      "name": "Rome",
+      "attractions": [
+        "Colliseum"
+      ],
+      "restaurants": [
+        "Rome"
+      ]
+    },
+    {
+      "name": "Paris",
+      "attractions": [
+        "Louvre"
+      ],
+      "restaurants": []
+    }
+  ]
+}
