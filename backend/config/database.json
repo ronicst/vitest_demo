@@ -1,0 +1,15 @@
+{
+  "files": {
+    "cities": "data.json"
+  },
+  "paths": {
+    "root": "./",
+    "data": "./data.json",
+    "users": "./users.json"
+  },
+  "defaults": {
+    "maxCitiesPerUser": 10,
+    "maxAttractionsPerCity": 5,
+    "maxRestaurantsPerCity": 5
+  }
+}

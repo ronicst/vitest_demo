@@ -50,6 +50,10 @@ function App() {
       .then(data => {
         if (data && data.username) setUser({ username: data.username }); // Set user if session exists
       })
+      .catch(error => {
+        // Handle network or JSON parsing errors gracefully
+        console.error('Session check error:', error.message);
+      })
       .finally(() => setLoading(false)); // Always clear loading
   }, []);
 
@@ -62,7 +66,12 @@ function App() {
   useEffect(() => {
     fetch(`${API}/cities`, { credentials: 'include' }) // API call to get cities
       .then(r => r.json())
-      .then(setCities); // Update cities state
+      .then(setCities) // Update cities state
+      .catch(error => {
+        // Handle network or JSON parsing errors gracefully
+        console.error('Cities fetch error:', error.message);
+        setCities([]); // Set empty array as fallback
+      });
   }, [user]);
 
   /**
@@ -108,7 +117,12 @@ function App() {
   const refreshCities = () => {
     fetch(`${API}/cities`, { credentials: 'include' }) // API call to get cities
       .then(r => r.json())
-      .then(setCities); // Update cities state
+      .then(setCities) // Update cities state
+      .catch(error => {
+        // Handle network or JSON parsing errors gracefully
+        console.error('Cities refresh error:', error.message);
+        setCities([]); // Set empty array as fallback
+      });
   };
 
   /**

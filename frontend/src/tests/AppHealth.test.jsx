@@ -3,10 +3,9 @@ import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import App from '../App';
 
-// This test checks the backend health endpoint from the frontend
-
 /**
- * This test verifies that the backend API is running and reachable from the frontend environment.
+ * This test verifies that the backend health endpoint (backend API) is running 
+ * and reachable from the frontend environment.
  *
  * What it does:
  * - Sends a GET request to the backend root endpoint ('http://localhost:3001/').

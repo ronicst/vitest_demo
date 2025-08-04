@@ -1,0 +1,268 @@
+{
+  "cities": [
+    {
+      "name": "Paris",
+      "attractions": [
+        "Eiffel Tower",
+        "Louvre Museum",
+        "Notre-Dame Cathedral",
+        "Arc de Triomphe",
+        "Champs-Élysées"
+      ],
+      "restaurants": [
+        "Le Meurice",
+        "L'Astrance",
+        "L'Arpège",
+        "Guy Savoy",
+        "Alain Ducasse au Plaza Athénée"
+      ]
+    },
+    {
+      "name": "Rome",
+      "attractions": [
+        "Colosseum",
+        "Vatican Museums",
+        "Sistine Chapel",
+        "St. Peter's Basilica",
+        "Roman Forum"
+      ],
+      "restaurants": [
+        "La Pergola",
+        "Il Pagliaccio",
+        "All'Oro",
+        "Aroma",
+        "La Terrazza"
+      ]
+    },
+    {
+      "name": "London",
+      "attractions": [
+        "Big Ben",
+        "Tower of London",
+        "Buckingham Palace",
+        "British Museum",
+        "London Eye"
+      ],
+      "restaurants": [
+        "The Ritz",
+        "Gordon Ramsay",
+        "Sketch",
+        "The Clove Club",
+        "Core by Clare Smyth"
+      ]
+    },
+    {
+      "name": "Barcelona",
+      "attractions": [
+        "Sagrada Familia",
+        "Park Güell",
+        "Casa Batlló",
+        "La Pedrera",
+        "Gothic Quarter"
+      ],
+      "restaurants": [
+        "El Celler de Can Roca",
+        "Disfrutar",
+        "ABaC",
+        "Tickets",
+        "Moments"
+      ]
+    },
+    {
+      "name": "Madrid",
+      "attractions": [
+        "Prado Museum",
+        "Royal Palace",
+        "Plaza Mayor",
+        "Retiro Park",
+        "Puerta del Sol"
+      ],
+      "restaurants": [
+        "DiverXO",
+        "Coque",
+        "Cenador de Amós",
+        "Akelarre",
+        "Arzak"
+      ]
+    },
+    {
+      "name": "Lisbon",
+      "attractions": [
+        "Belém Tower",
+        "Jerónimos Monastery",
+        "Alfama District",
+        "São Jorge Castle",
+        "Tram 28"
+      ],
+      "restaurants": [
+        "Belcanto",
+        "Alma",
+        "Loco",
+        "Feitoria",
+        "A Taberna da Rua das Flores"
+      ]
+    },
+    {
+      "name": "Marseille",
+      "attractions": [
+        "Notre-Dame de la Garde",
+        "Vieux Port",
+        "Le Panier",
+        "Calanques National Park",
+        "MuCEM"
+      ],
+      "restaurants": [
+        "Le Petit Nice",
+        "L'Épuisette",
+        "AM par Alexandre Mazzia",
+        "Une Table au Sud",
+        "Le Malthazar"
+      ]
+    },
+    {
+      "name": "Nice",
+      "attractions": [
+        "Promenade des Anglais",
+        "Old Town (Vieux Nice)",
+        "Castle Hill",
+        "Cours Saleya Market",
+        "Place Masséna"
+      ],
+      "restaurants": [
+        "Le Chantecler",
+        "Flaveur",
+        "Jan",
+        "L'Aromate",
+        "Le Bistrot d'Antoine"
+      ]
+    },
+    {
+      "name": "Venice",
+      "attractions": [
+        "St. Mark's Basilica",
+        "Doge's Palace",
+        "Rialto Bridge",
+        "Grand Canal",
+        "St. Mark's Square"
+      ],
+      "restaurants": [
+        "Osteria Francescana",
+        "Le Calandre",
+        "Da Vittorio",
+        "Dal Pescatore",
+        "Osteria di San Marco"
+      ]
+    }
+  ],
+  "alice": [
+    {
+      "name": "Paris",
+      "attractions": [],
+      "restaurants": []
+    }
+  ],
+  "latest": [
+    {
+      "name": "City0",
+      "attractions": [],
+      "restaurants": []
+    },
+    {
+      "name": "City1",
+      "attractions": [],
+      "restaurants": []
+    },
+    {
+      "name": "City2",
+      "attractions": [],
+      "restaurants": []
+    },
+    {
+      "name": "City3",
+      "attractions": [],
+      "restaurants": []
+    },
+    {
+      "name": "City4",
+      "attractions": [],
+      "restaurants": []
+    },
+    {
+      "name": "City5",
+      "attractions": [],
+      "restaurants": []
+    },
+    {
+      "name": "City6",
+      "attractions": [],
+      "restaurants": []
+    },
+    {
+      "name": "City7",
+      "attractions": [],
+      "restaurants": []
+    },
+    {
+      "name": "City8",
+      "attractions": [],
+      "restaurants": []
+    },
+    {
+      "name": "City9",
+      "attractions": [],
+      "restaurants": []
+    }
+  ],
+  "eve": [
+    {
+      "name": "City0",
+      "attractions": [],
+      "restaurants": []
+    },
+    {
+      "name": "City1",
+      "attractions": [],
+      "restaurants": []
+    },
+    {
+      "name": "City2",
+      "attractions": [],
+      "restaurants": []
+    },
+    {
+      "name": "City3",
+      "attractions": [],
+      "restaurants": []
+    },
+    {
+      "name": "City4",
+      "attractions": [],
+      "restaurants": []
+    },
+    {
+      "name": "City5",
+      "attractions": [],
+      "restaurants": []
+    },
+    {
+      "name": "City6",
+      "attractions": [],
+      "restaurants": []
+    },
+    {
+      "name": "City7",
+      "attractions": [],
+      "restaurants": []
+    },
+    {
+      "name": "City8",
+      "attractions": [],
+      "restaurants": []
+    },
+    {
+      "name": "City9",
+      "attractions": [],
+      "restaurants": []
+    }
+  ]
+}

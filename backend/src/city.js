@@ -8,25 +8,28 @@ const fs = require('fs');
 const path = require('path');
 const router = express.Router();
 
-const DATA_FILE = path.join(__dirname, '../data.json');
+// Import global configuration
+const config = require('../config/config');
 
 /**
- * Reads the city data from data.json.
+ * Reads the city data from the configured data file.
  * @returns {object} The parsed data object, or a default object if the file does not exist.
  * Side effect: Reads from the filesystem.
  */
 function readData() {
-  if (!fs.existsSync(DATA_FILE)) return { cities: [], latest: null }; // Return default if file missing
-  return JSON.parse(fs.readFileSync(DATA_FILE, 'utf-8')); // Parse and return data
+  const dataFile = config.getCitiesFilePath();
+  if (!fs.existsSync(dataFile)) return { cities: [], latest: null }; // Return default if file missing
+  return JSON.parse(fs.readFileSync(dataFile, 'utf-8')); // Parse and return data
 }
 
 /**
- * Writes the given data object to data.json.
+ * Writes the given data object to the configured data file.
  * @param {object} data - The data object to write.
  * Side effect: Writes to the filesystem.
  */
 function writeData(data) {
-  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2)); // Write formatted JSON
+  const dataFile = config.getCitiesFilePath();
+  fs.writeFileSync(dataFile, JSON.stringify(data, null, 2)); // Write formatted JSON
 }
 
 /**
@@ -39,11 +42,15 @@ function getUserCities(username) {
   let cities = [];
   if (username && data[username]) cities = data[username]; // User-specific cities
   else if (data.latest) cities = data.latest; // Fallback to latest
-  // Limit to last 10 cities, and last 5 attractions/restaurants per city
-  cities = cities.slice(-10).map(city => ({
+  // Limit to configured number of cities, and configured attractions/restaurants per city
+  const maxCities = config.getMaxCitiesPerUser();
+  const maxAttractions = config.getMaxAttractionsPerCity();
+  const maxRestaurants = config.getMaxRestaurantsPerCity();
+  
+  cities = cities.slice(-maxCities).map(city => ({
     ...city,
-    attractions: (city.attractions || []).slice(-5),
-    restaurants: (city.restaurants || []).slice(-5)
+    attractions: (city.attractions || []).slice(-maxAttractions),
+    restaurants: (city.restaurants || []).slice(-maxRestaurants)
   }));
   return cities;
 }
@@ -76,12 +83,15 @@ router.post('/', (req, res) => {
   const data = readData();
   if (!data[username]) data[username] = [];
   const idx = data[username].findIndex(c => c.name === city.name);
-  if (idx === -1 && data[username].length >= 10) {
-    return res.status(400).json({ error: 'City limit (10) reached' });
+  const maxCities = config.getMaxCitiesPerUser();
+  if (idx === -1 && data[username].length >= maxCities) {
+    return res.status(400).json({ error: `City limit (${maxCities}) reached` });
   }
-  // Limit attractions and restaurants to 5 each
-  city.attractions = (city.attractions || []).slice(0, 5);
-  city.restaurants = (city.restaurants || []).slice(0, 5);
+  // Limit attractions and restaurants to configured limits
+  const maxAttractions = config.getMaxAttractionsPerCity();
+  const maxRestaurants = config.getMaxRestaurantsPerCity();
+  city.attractions = (city.attractions || []).slice(0, maxAttractions);
+  city.restaurants = (city.restaurants || []).slice(0, maxRestaurants);
   if (idx >= 0) {
     data[username][idx] = city; // Update existing city
   } else {
@@ -129,8 +139,9 @@ router.post('/:cityName/attractions', (req, res) => {
   const city = (data[username] || []).find(c => c.name === cityName);
   if (!city) return res.status(404).json({ error: 'City not found' });
   city.attractions = city.attractions || [];
-  if (city.attractions.length >= 5) {
-    return res.status(400).json({ error: 'Attraction limit (5) reached' });
+  const maxAttractions = config.getMaxAttractionsPerCity();
+  if (city.attractions.length >= maxAttractions) {
+    return res.status(400).json({ error: `Attraction limit (${maxAttractions}) reached` });
   }
   const idx = city.attractions.findIndex(a => a === attraction);
   if (idx === -1) city.attractions.push(attraction); // Add attraction if not duplicate
@@ -177,8 +188,9 @@ router.post('/:cityName/restaurants', (req, res) => {
   const city = (data[username] || []).find(c => c.name === cityName);
   if (!city) return res.status(404).json({ error: 'City not found' });
   city.restaurants = city.restaurants || [];
-  if (city.restaurants.length >= 5) {
-    return res.status(400).json({ error: 'Restaurant limit (5) reached' });
+  const maxRestaurants = config.getMaxRestaurantsPerCity();
+  if (city.restaurants.length >= maxRestaurants) {
+    return res.status(400).json({ error: `Restaurant limit (${maxRestaurants}) reached` });
   }
   const idx = city.restaurants.findIndex(r => r === restaurant);
   if (idx === -1) city.restaurants.push(restaurant); // Add restaurant if not duplicate

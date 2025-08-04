@@ -1,5 +1,7 @@
 /**
  * health.test.js
+ * 
+ * ESM version for Vitest compatibility
  *
  * This test suite verifies the backend health check endpoint. It ensures that the root endpoint ('/')
  * responds with the expected health message and status code, confirming that the backend server is up.
@@ -9,7 +11,7 @@
  * - Sending a GET request to the root endpoint
  * - Asserting the response status and message
  */
-// ESM version for Vitest compatibility
+
 import express from 'express';
 import request from 'supertest';
 import { describe, it, expect } from 'vitest';

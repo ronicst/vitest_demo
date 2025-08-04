@@ -8,25 +8,28 @@ const express = require('express');
 const fs = require('fs');
 const router = express.Router();
 
-const USERS_FILE = path.join(__dirname, '../users.json');
+// Import global configuration
+const config = require('../config/config');
 
 /**
- * Reads the list of users from the users.json file.
+ * Reads the list of users from the configured users file.
  * @returns {Array} Array of user objects, or an empty array if the file does not exist.
  * Side effect: Reads from the filesystem.
  */
 function readUsers() {
-  if (!fs.existsSync(USERS_FILE)) return []; // Return empty array if file missing
-  return JSON.parse(fs.readFileSync(USERS_FILE, 'utf-8')); // Parse and return users
+  const usersFile = config.getUsersFilePath();
+  if (!fs.existsSync(usersFile)) return []; // Return empty array if file missing
+  return JSON.parse(fs.readFileSync(usersFile, 'utf-8')); // Parse and return users
 }
 
 /**
- * Writes the given users array to the users.json file.
+ * Writes the given users array to the configured users file.
  * @param {Array} users - Array of user objects to write.
  * Side effect: Writes to the filesystem.
  */
 function writeUsers(users) {
-  fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2)); // Write formatted JSON
+  const usersFile = config.getUsersFilePath();
+  fs.writeFileSync(usersFile, JSON.stringify(users, null, 2)); // Write formatted JSON
 }
 
 /**

@@ -39,19 +39,23 @@ export default function CityList({ cities, onAddCity, onUpdateCity, onDeleteCity
    * @param {string} cityName - The name of the city to toggle
    */
   const toggle = cityName => setExpanded(e => ({ ...e, [cityName]: !e[cityName] }));
+  
+  // Ensure cities is always an array
+  const safeCities = Array.isArray(cities) ? cities : [];
+  
   return (
     <div className="city-list">
       <h2>Top 10 Cities in Europe</h2>
       {/* Show error message if present */}
       {error && <div className="error-msg">{error}</div>}
       {/* Show Add City button only if logged in and under limit */}
-      {loggedIn && cities.length < 10 && (
+      {loggedIn && safeCities.length < 10 && (
         <button className="add-btn" onClick={() => onAddCity()}>Add City</button>
       )}
       {/* Show message if no cities exist */}
-      {cities.length === 0 && <div className="no-cities">The list is still building it...</div>}
+      {safeCities.length === 0 && <div className="no-cities">The list is still building it...</div>}
       {/* Render each city as a card with expand/collapse and actions */}
-      {cities.map(city => (
+      {safeCities.map(city => (
         <div key={city.name} className="city-item bright-card">
           <div className="city-header">
             {/* City name, wrapped for long names */}
